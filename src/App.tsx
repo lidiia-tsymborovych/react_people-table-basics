@@ -17,14 +17,16 @@ export const App = () => (
       role="navigation"
       aria-label="main navigation"
     >
-      <div className="navbar-brand">
-        <NavLink className={getLinkClass} to="/">
-          Home
-        </NavLink>
+      <div className="container">
+        <div className="navbar-brand">
+          <NavLink className={getLinkClass} to="/">
+            Home
+          </NavLink>
 
-        <NavLink className={getLinkClass} to="/people">
-          People
-        </NavLink>
+          <NavLink className={getLinkClass} to="/people">
+            People
+          </NavLink>
+        </div>
       </div>
     </nav>
 
@@ -32,7 +34,12 @@ export const App = () => (
       <div className="container">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/people/:selectedSlug?" element={<PeoplePage />} />
+
+          <Route path="/people">
+            <Route index element={<PeoplePage />} />
+            <Route path=":selectedSlug?" element={<PeoplePage />} />
+          </Route>
+
           <Route path="*" element={<NotFoundPage />} />
           <Route path="/home" element={<Navigate to="/" replace />} />
         </Routes>
