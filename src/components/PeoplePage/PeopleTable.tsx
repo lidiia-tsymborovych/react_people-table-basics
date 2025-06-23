@@ -33,13 +33,19 @@ export const PeopleTable = ({ people, selectedSlug }: Props) => {
               'has-background-warning': person.slug === selectedSlug,
             })}
           >
-            <PersonLink name={person.name} people={people} />
+            <td>
+              <PersonLink name={person.name} people={people} />
+            </td>
 
             <td>{person.sex}</td>
             <td>{person.born}</td>
             <td>{person.died}</td>
-            <PersonLink name={person.motherName} people={people} />
-            <PersonLink name={person.fatherName} people={people} />
+            <td>
+              <PersonLink name={person.motherName} people={people} />
+            </td>
+            <td>
+              <PersonLink name={person.fatherName} people={people} />
+            </td>
           </tr>
         ))}
       </tbody>

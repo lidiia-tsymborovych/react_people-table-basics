@@ -9,23 +9,21 @@ type Props = {
 
 export const PersonLink = ({ name, people }: Props) => {
   if (!name) {
-    return <td>-</td>;
+    return <>-</>;
   }
 
   const foundPerson = people.find(person => person.name === name);
 
   if (!foundPerson) {
-    return <td>{name}</td>;
+    return <>{name}</>;
   }
 
   return (
-    <td>
-      <Link
-        to={`/people/${foundPerson.slug}`}
-        className={cn({ 'has-text-danger': foundPerson.sex === 'f' })}
-      >
-        {name}
-      </Link>
-    </td>
+    <Link
+      to={`/people/${foundPerson.slug}`}
+      className={cn({ 'has-text-danger': foundPerson.sex === 'f' })}
+    >
+      {name}
+    </Link>
   );
 };
